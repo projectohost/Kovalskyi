@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="./reviews.css" />
+      <style>
+            body {
+                background-color: #f4f4f9;
+            }
+            .review-container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+                opacity: 0; /* Set initial opacity for fade-in effect */
+                animation: fadeIn 1s forwards; /* Animation for fade-in */
+            }
+            .review-card {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+            }
+            .review-card:hover {
+                transform: scale(1.05); /* Slight scale-up on hover */
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+            }
+            .form-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+            /* Animation for the form submission */
+            @keyframes formSubmission {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="alert alert-info text-center" role="alert">
+                В нас найкраща риба в світі
+            </div>
+            <header class="d-flex justify-content-center py-3">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="reviews.html" class="nav-link active">Reviews</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQs</a></li>
+                </ul>
+            </header>
+        </div>
+        <div class="container my-5">
+            <h2 class="text-center mb-4">Customer Reviews</h2>
+
+            <!-- Review Form Section -->
+            <section class="review-container form-container">
+                <h4>Leave a Review</h4>
+                <form id="reviewForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your email address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <select class="form-select" id="rating" required>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="review" class="form-label">Review</label>
+                        <textarea class="form-control" id="review" rows="4" placeholder="Write your review here" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            </section>
+
+            <hr class="my-5">
+
+            <!-- Display Reviews -->
+            <section class="review-container">
+                <h4>What Our Customers Say</h4>
+                <div id="reviewsList">
+                    <!-- Existing Reviews -->
+                    <div class="review-card">
+                        <h5>John Doe</h5>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐</p>
+                        <p>This is the best fish I have ever tasted! Fresh, juicy, and absolutely delicious. Highly recommend!</p>
+                    </div>
+
+                    <div class="review-card">
+                        <h5>Jane Smith</h5>
+                        <p><strong>Rating:</strong> ⭐⭐⭐⭐</p>
+                        <p>Great service and quality! The fish was fresh, but I think there could be a little more variety.</p>
+                    </div>
+
+                    <div class="review-card">
+                        <h5>Michael Brown</h5>
+                        <p><strong>Rating:</strong> ⭐⭐⭐</p>
+                        <p>Good quality fish, but I expected a bit more from the packaging. Overall, satisfied.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="container">
+                <h4 class="text-center">Contact Us</h4>
+                <p class="text-center">For any inquiries, feel free to reach us:</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><strong>Email:</strong> example@email.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Phone:</strong> +123 456 789</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><strong>Address:</strong> 123 Ocean Avenue, City, Country</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+            document.getElementById('reviewForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form values
+                const name = document.getElementById('name').value;
+                const rating = document.getElementById('rating').value;
+                const reviewText = document.getElementById('review').value;
+
+                // Create new review card
+                const reviewCard = document.createElement('div');
+                reviewCard.classList.add('review-card');
+                reviewCard.style.animation = 'formSubmission 1s ease'; // Apply form submission animation
+
+                reviewCard.innerHTML = `
+                    <h5>${name}</h5>
+                    <p><strong>Rating:</strong> ${'⭐'.repeat(rating)}</p>
+                    <p>${reviewText}</p>
+                `;
+
+                // Append to reviews list
+                document.getElementById('reviewsList').appendChild(reviewCard);
+
+                // Reset the form
+                document.getElementById('reviewForm').reset();
+            });
+        </script>
+    </body>
+</html>
